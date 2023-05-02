@@ -2,28 +2,28 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="grid grid-cols-4 gap-16">
-      <div>
+    <header className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-4">
+      <div className="col-span-2 md:col-span-1">
         <p className="font-semibold text-foreground">Alex Carpenter</p>
         <p className="text-foreground-neutral">Design Engineer</p>
       </div>
 
-      <div className="col-span-2">
+      <div className="md:col-span-2">
         <p className="font-semibold text-foreground">Routes</p>
         <Link href="/" className="text-foreground-neutral">
-          /index
+          <span aria-hidden="true">/</span>index
         </Link>
         <br />
         <Link href="/posts" className="text-foreground-neutral">
-          /posts
+          <span aria-hidden="true">/</span>posts
         </Link>
         <br />
         <Link href="/activity" className="text-foreground-neutral">
-          /activity
+          <span aria-hidden="true">/</span>activity
         </Link>
         <br />
         <Link href="/colphon" className="text-foreground-neutral">
-          /colophon
+          <span aria-hidden="true">/</span>colophon
         </Link>
       </div>
 
