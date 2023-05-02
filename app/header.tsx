@@ -2,9 +2,11 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <header className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-4">
+    <header className="grid grid-cols-2 gap-x-16 gap-y-4 md:grid-cols-4">
       <div className="col-span-2 md:col-span-1">
-        <p className="font-semibold text-foreground">Alex Carpenter</p>
+        <p className="font-semibold text-foreground">
+          <Link href="/">Alex Carpenter</Link>
+        </p>
         <p className="text-foreground-neutral">Design Engineer</p>
       </div>
 
