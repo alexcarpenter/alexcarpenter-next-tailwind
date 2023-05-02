@@ -25,9 +25,9 @@ export default function Bookmarks() {
             return (
               <li
                 key={bookmark._id}
-                className="grid grid-cols-4 gap-16 border-t py-8"
+                className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4"
               >
-                <div className="col-span-2 col-start-2">
+                <div className="md:col-span-2 md:col-start-2">
                   <p className="text-sm text-foreground-neutral">
                     {new URL(bookmark.url).hostname}
                   </p>
@@ -47,7 +47,7 @@ export default function Bookmarks() {
                   ) : null}
                 </div>
 
-                <div className="col-start-1 row-start-1">
+                <div className="md:col-start-1 md:row-start-1">
                   <time
                     className="text-sm text-foreground-neutral"
                     dateTime={bookmark.date}
