@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gradientColorStops: {
+        "text-gradient-start": "hsl(var(--foreground))",
+        "text-gradient-end": "hsl(var(--foreground-neutral))",
+      },
       fontFamily: {
         sans: ["var(--font-inter)", ...fontFamily.sans],
         serif: ["var(--font-instrument)", ...fontFamily.serif],
