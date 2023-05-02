@@ -1,4 +1,5 @@
 import type { Metadata } from "next/types";
+import { parseDateToString } from "@/lib/formatting";
 import { allBookmarks } from "contentlayer/generated";
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function Bookmarks() {
                     className="text-sm text-foreground-neutral"
                     dateTime={bookmark.date}
                   >
-                    {bookmark.date}
+                    {parseDateToString(bookmark.date)}
                   </time>
                 </div>
               </li>
