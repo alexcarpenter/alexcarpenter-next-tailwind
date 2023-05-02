@@ -30,21 +30,21 @@ export function Header() {
       <div>
         <p className="font-semibold text-foreground">Connect</p>
         <a href="https://twitter.com/home" className="text-foreground-neutral">
-          Twitter
+          Twitter <span aria-hidden="true">↗</span>
         </a>
         <br />
         <a
           href="https://github.com/alexcarpenter"
           className="text-foreground-neutral"
         >
-          GitHub
+          GitHub <span aria-hidden="true">↗</span>
         </a>
         <br />
         <a
           href="https://www.linkedin.com/in/imalexcarpenter/"
           className="text-foreground-neutral"
         >
-          LinkedIn
+          LinkedIn <span aria-hidden="true">↗</span>
         </a>
       </div>
     </header>

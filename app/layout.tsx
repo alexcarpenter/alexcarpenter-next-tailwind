@@ -1,13 +1,18 @@
 import "./globals.css";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import { cx } from "@/lib/classnames";
 import { Header } from "./header";
 import { Footer } from "./footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = localFont({
+  src: "../public/fonts/inter-var-latin.woff2",
+  display: "swap",
+  variable: "--font-inter",
+});
 
 const instrument = Instrument_Serif({
-  variable: "--serif-font",
+  variable: "--font-instrument",
   subsets: ["latin"],
   weight: "400",
   style: "italic",
@@ -27,8 +32,8 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body
         className={cx(
-          "bg-page py-16 px-4 antialiased max-w-[112.5rem] mx-auto",
-          inter.className,
+          "bg-page py-16 px-4 antialiased max-w-[112.5rem] mx-auto font-sans",
+          inter.variable,
           instrument.variable
         )}
       >

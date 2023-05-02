@@ -1,17 +1,9 @@
-import { Instrument_Serif } from "next/font/google";
-
-const instrument = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-});
-
 export default function Home() {
   return (
     <>
       <section className="mt-16 grid grid-cols-4 gap-16">
         <div className="col-start-2 col-span-2">
-          <p className={`text-3xl ${instrument.className} text-foreground`}>
+          <p className="text-3xl text-foreground font-serif">
             A detail oriented user interface engineer interested in CSS
             architecture, React, TypeScript, animation, and design systems.
             Currently working at HashiCorp, helping build and maintain
