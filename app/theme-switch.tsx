@@ -21,6 +21,7 @@ export function ThemeSwitch() {
 
   return (
     <fieldset onChange={handleChange}>
+      <legend>Toggle theme</legend>
       <label>
         <input
           type="radio"
