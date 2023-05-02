@@ -1,5 +1,3 @@
-import { Header } from "./header";
-
 import { Instrument_Serif } from "next/font/google";
 
 const instrument = Instrument_Serif({
@@ -11,8 +9,6 @@ const instrument = Instrument_Serif({
 export default function Home() {
   return (
     <>
-      <Header />
-
       <section className="mt-16 grid grid-cols-4 gap-16">
         <div className="col-start-2 col-span-2">
           <p className={`text-3xl ${instrument.className} text-foreground`}>

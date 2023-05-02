@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter, Instrument_Serif } from "next/font/google";
 import { cx } from "@/lib/classnames";
+import { Header } from "./header";
+import { Footer } from "./footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +32,9 @@ export default function RootLayout({
           instrument.variable
         )}
       >
-        {children}
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );
