@@ -1,5 +1,5 @@
 import type { Metadata } from "next/types";
-import { parseDateToString } from "@/lib/formatting";
+import { parseDateToString, compareDesc } from "@/lib/formatting";
 import { allBookmarks } from "contentlayer/generated";
 
 export const metadata: Metadata = {
@@ -8,6 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function Bookmarks() {
+  const sortedBookmarks = allBookmarks.sort(({ date: a }, { date: b }) =>
+    compareDesc(new Date(a), new Date(b))
+  );
   return (
     <>
       <header className="mt-16 grid gap-16 md:grid-cols-4">
@@ -21,7 +24,7 @@ export default function Bookmarks() {
 
       <section className="mt-16">
         <ul>
-          {allBookmarks.map((bookmark) => {
+          {sortedBookmarks.map((bookmark) => {
             return (
               <li
                 key={bookmark._id}
