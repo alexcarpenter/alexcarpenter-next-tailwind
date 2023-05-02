@@ -20,13 +20,17 @@ export function Header() {
           <span aria-hidden="true">/</span>posts
         </Link>
         <br />
+        <Link href="/bookmarks" className="text-foreground-neutral">
+          <span aria-hidden="true">/</span>bookmarks
+        </Link>
+        {/* <br />
         <Link href="/activity" className="text-foreground-neutral">
           <span aria-hidden="true">/</span>activity
         </Link>
         <br />
         <Link href="/colphon" className="text-foreground-neutral">
           <span aria-hidden="true">/</span>colophon
-        </Link>
+        </Link> */}
       </div>
 
       <div>

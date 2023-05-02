@@ -1,3 +1,5 @@
+import { buttonVariants } from "@/styles/button";
+
 export default function Home() {
   return (
     <>
@@ -9,6 +11,14 @@ export default function Home() {
             Currently working at HashiCorp, helping build and maintain
             public-facing HashiCorp websites and web applications with Next.js.
           </p>
+          <div className="mt-8">
+            <a
+              href="https://read.cv/alexcarpenter"
+              className={buttonVariants()}
+            >
+              Read CV
+            </a>
+          </div>
         </div>
       </header>
 
