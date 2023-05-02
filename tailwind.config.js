@@ -29,6 +29,9 @@ module.exports = {
       borderColor: {
         DEFAULT: "hsl(var(--border))",
       },
+      textDecorationColor: {
+        underline: "hsl(var(--underline))",
+      },
     },
   },
   plugins: [],

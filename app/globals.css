@@ -9,6 +9,7 @@
     --foreground-neutral: 0 0% 43.5%;
     --border: 0 0% 85.9%;
     --surface-action: 79.2 87.4% 62.7%;
+    --underline: 0 0% 85.9%;
   }
 
   .dark {
@@ -17,5 +18,6 @@
     --foreground-neutral: 0 0% 62.7%;
     --border: 0 0% 24.3%;
     --surface-action: 81.1 67.1% 50%;
+    --underline: 0 0% 31.4%;
   }
 }
