@@ -1,3 +1,10 @@
+import type { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Bookmarks // Alex Carpenter",
+  description: "Saving for later.",
+};
+
 export default function Bookmarks() {
   return (
     <>

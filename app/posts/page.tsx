@@ -1,3 +1,10 @@
+import type { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Posts // Alex Carpenter",
+  description: "Strong opinions, loosely held.",
+};
+
 export default function Posts() {
   return (
     <>
