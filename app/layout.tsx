@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { cx } from "@/lib/classnames";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { Providers } from "./providers";
 
 const inter = localFont({
   src: "../public/fonts/inter-var-latin.woff2",
@@ -29,17 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cx(
-          "bg-page py-16 px-4 antialiased max-w-[112.5rem] mx-auto font-sans",
+          "mx-auto max-w-[112.5rem] bg-page px-4 py-16 font-sans antialiased",
           inter.variable,
           instrument.variable
         )}
       >
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
