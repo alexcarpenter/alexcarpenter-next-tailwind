@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <header className="mt-16 grid gap-16 md:grid-cols-4">
         <div className="md:col-span-2 md:col-start-2">
-          <p className="bg-gradient-to-br from-text-gradient-start to-text-gradient-end bg-clip-text font-serif text-xl italic text-transparent md:text-3xl">
+          <p className="bg-gradient-to-br from-text-gradient-start to-text-gradient-end bg-clip-text font-serif text-2xl italic text-transparent md:text-3xl">
             A detail oriented user interface engineer interested in CSS
             architecture, React, TypeScript, animation, and design systems.
             Currently working at HashiCorp, helping build and maintain
