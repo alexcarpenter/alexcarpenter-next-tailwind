@@ -11,7 +11,7 @@ export function Header() {
       </div>
 
       <div className="md:col-span-2">
-        <p className="font-semibold text-foreground">Routes</p>
+        <p className="font-variable-semibold text-foreground">Routes</p>
         <Link href="/" className="text-foreground-neutral">
           <span aria-hidden="true">/</span>index
         </Link>
