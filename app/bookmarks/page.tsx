@@ -15,7 +15,9 @@ export default function Bookmarks() {
     <>
       <header className="mt-16 grid gap-16 md:grid-cols-4">
         <div className="md:col-span-2 md:col-start-2">
-          <h1 className="text-3xl font-semibold text-foreground">Bookmarks</h1>
+          <h1 className="font-variable-semibold text-3xl text-foreground">
+            Bookmarks
+          </h1>
           <p className="mt-2 font-serif text-2xl italic text-foreground-neutral">
             Saving for later.
           </p>
@@ -34,7 +36,7 @@ export default function Bookmarks() {
                   <p className="text-sm text-foreground-neutral">
                     {new URL(bookmark.url).hostname}
                   </p>
-                  <h2 className="font-semibold">
+                  <h2 className="font-variable-semibold">
                     <a
                       href={bookmark.url}
                       className="underline decoration-underline decoration-2 hover:decoration-inherit"

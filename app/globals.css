@@ -21,3 +21,9 @@
     --underline: 0 0% 31.4%;
   }
 }
+
+@layer utilities {
+  .font-variable-semibold {
+    font-variation-settings: "wght" 600;
+  }
+}

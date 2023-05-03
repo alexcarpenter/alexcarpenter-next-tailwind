@@ -20,14 +20,15 @@ export function ThemeSwitch() {
   };
 
   return (
-    <fieldset onChange={handleChange}>
+    <fieldset>
       <legend>Toggle theme</legend>
       <label>
         <input
           type="radio"
           name="theme"
-          checked={theme === "system"}
           value="system"
+          defaultChecked={theme === "system"}
+          onChange={handleChange}
         />
         <span>System</span>
       </label>
@@ -35,8 +36,9 @@ export function ThemeSwitch() {
         <input
           type="radio"
           name="theme"
-          checked={theme === "dark"}
           value="dark"
+          defaultChecked={theme === "dark"}
+          onChange={handleChange}
         />
         <span>Dark</span>
       </label>
@@ -44,8 +46,9 @@ export function ThemeSwitch() {
         <input
           type="radio"
           name="theme"
-          checked={theme === "light"}
           value="light"
+          defaultChecked={theme === "light"}
+          onChange={handleChange}
         />
         <span>Light</span>
       </label>
