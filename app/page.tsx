@@ -24,13 +24,13 @@ export default function Home() {
 
       {/* <section className="mt-16 grid grid-cols-4 gap-16">
         <div className="col-start-2 col-span-2">
-          <h2 className="font-semibold text-foreground">Experience</h2>
+          <h2 className="font-variable-semibold text-foreground">Experience</h2>
         </div>
       </section> */}
 
       {/* <section className="mt-16 grid grid-cols-4 gap-16">
         <div className="col-start-2 col-span-2">
-          <h2 className="font-semibold text-foreground">Recommendations</h2>
+          <h2 className="font-variable-semibold text-foreground">Recommendations</h2>
         </div>
       </section> */}
     </>
