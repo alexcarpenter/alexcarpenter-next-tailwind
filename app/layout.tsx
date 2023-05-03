@@ -47,6 +47,9 @@ export const metadata = {
   twitter: {
     title: "Alex Carpenter",
   },
+  icons: {
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

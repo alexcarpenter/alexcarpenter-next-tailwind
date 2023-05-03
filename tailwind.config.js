@@ -21,6 +21,7 @@ module.exports = {
       backgroundColor: {
         page: "hsl(var(--page))",
         "surface-action": "hsl(var(--surface-action))",
+        "surface-neutral": "hsl(var(--surface-neutral))",
       },
       textColor: {
         foreground: "hsl(var(--foreground))",

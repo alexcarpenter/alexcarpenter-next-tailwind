@@ -1,7 +1,11 @@
-// @ts-nocheck
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
+import { useFocusWithin, useFocusVisible } from "react-aria";
+import { cx } from "@/lib/classnames";
+
+type Theme = "system" | "dark" | "light";
 
 export function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
@@ -21,41 +25,81 @@ export function ThemeSwitch() {
 
   return (
     <fieldset>
-      <legend>Toggle theme</legend>
-      <label>
-        <input
-          type="radio"
-          name="theme"
-          value="system"
-          defaultChecked={theme === "system"}
-          onChange={handleChange}
+      <legend className="sr-only">Toggle theme</legend>
+      <motion.div
+        className="inline-flex gap-1 rounded-full border p-1"
+        layout
+        layoutRoot
+      >
+        <Option
+          currentTheme={theme as Theme}
+          theme="system"
+          handleChange={handleChange}
+          icon={<SystemIcon />}
         />
-        <span className="sr-only">System</span>
-        <SystemIcon />
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="theme"
-          value="dark"
-          defaultChecked={theme === "dark"}
-          onChange={handleChange}
+
+        <Option
+          currentTheme={theme as Theme}
+          theme="dark"
+          handleChange={handleChange}
+          icon={<DarkIcon />}
         />
-        <span className="sr-only">Dark</span>
-        <DarkIcon />
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="theme"
-          value="light"
-          defaultChecked={theme === "light"}
-          onChange={handleChange}
+
+        <Option
+          currentTheme={theme as Theme}
+          theme="light"
+          handleChange={handleChange}
+          icon={<LightIcon />}
         />
-        <span className="sr-only">Light</span>
-        <LightIcon />
-      </label>
+      </motion.div>
     </fieldset>
+  );
+}
+
+function Option({
+  currentTheme,
+  theme,
+  handleChange,
+  icon,
+}: {
+  currentTheme: Theme;
+  theme: Theme;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  icon: ReactNode;
+}) {
+  const [isFocusWithin, setFocusWithin] = useState(false);
+  const { isFocusVisible } = useFocusVisible({ isTextInput: false });
+  const { focusWithinProps } = useFocusWithin({
+    onFocusWithinChange: (isFocusWithin) => setFocusWithin(isFocusWithin),
+  });
+  return (
+    <label
+      {...focusWithinProps}
+      className="group relative rounded-full px-2.5 py-1"
+    >
+      <input
+        type="radio"
+        name="theme"
+        value={theme}
+        defaultChecked={currentTheme === theme}
+        onChange={handleChange}
+        className="absolute opacity-0"
+      />
+      <span className="sr-only">{theme}</span>
+      {currentTheme === theme ? (
+        <motion.span
+          layoutId="highlight"
+          className={cx(
+            "absolute inset-0 bg-surface-neutral",
+            isFocusWithin && isFocusVisible && "ring"
+          )}
+          style={{ borderRadius: 9999 }}
+        />
+      ) : null}
+      <span className="relative z-10 opacity-50 transition-opacity group-hover:opacity-100">
+        {icon}
+      </span>
+    </label>
   );
 }
 
@@ -68,10 +112,9 @@ function SystemIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="feather feather-monitor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
       <line x1="8" y1="21" x2="16" y2="21" />
@@ -89,10 +132,9 @@ function LightIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="feather feather-sun"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
@@ -116,10 +158,9 @@ function DarkIcon() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="feather feather-moon"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>

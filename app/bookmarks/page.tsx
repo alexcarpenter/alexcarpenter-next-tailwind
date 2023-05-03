@@ -15,10 +15,10 @@ export default function Bookmarks() {
     <>
       <header className="mt-16 grid gap-16 md:grid-cols-4">
         <div className="md:col-span-2 md:col-start-2">
-          <h1 className="font-variable-semibold text-3xl text-foreground">
+          <h1 className="font-variable-semibold text-3xl tracking-tight text-foreground">
             Bookmarks
           </h1>
-          <p className="mt-2 font-serif text-2xl italic text-foreground-neutral">
+          <p className="mt-1 text-lg text-foreground-neutral">
             Saving for later.
           </p>
         </div>
@@ -39,7 +39,7 @@ export default function Bookmarks() {
                   <h2 className="font-variable-semibold">
                     <a
                       href={bookmark.url}
-                      className="underline decoration-underline decoration-2 hover:decoration-inherit"
+                      className="underline decoration-underline hover:decoration-inherit"
                     >
                       {bookmark.title}
                     </a>{" "}
