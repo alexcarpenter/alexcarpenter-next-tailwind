@@ -1,6 +1,6 @@
 import type { Metadata } from "next/types";
 import { parseDateToString, compareDesc } from "@/lib/formatting";
-import { allBookmarks } from "contentlayer/generated";
+import { allBookmarks } from "@/.contentlayer/generated";
 
 export const metadata: Metadata = {
   title: "Bookmarks",

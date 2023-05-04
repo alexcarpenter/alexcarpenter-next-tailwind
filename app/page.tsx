@@ -1,3 +1,4 @@
+import { allRecommendations } from "@/.contentlayer/generated";
 import { buttonVariants } from "@/styles/button";
 
 export default function Home() {
@@ -30,11 +31,39 @@ export default function Home() {
         </div>
       </section> */}
 
-      {/* <section className="mt-16 grid grid-cols-4 gap-16">
-        <div className="col-start-2 col-span-2">
-          <h2 className="font-variable-semibold text-foreground">Recommendations</h2>
-        </div>
-      </section> */}
+      <section className="mt-16">
+        <header className="grid gap-16 md:grid-cols-4">
+          <div className="md:col-span-2 md:col-start-2">
+            <h2 className="font-variable-semibold text-lg">
+              Recommendations <span aria-hidden="true">¬</span>
+            </h2>
+          </div>
+        </header>
+
+        <ul className="mt-8">
+          {allRecommendations.map(({ _id, name, text, title, company }) => {
+            return (
+              <li
+                key={_id}
+                className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4"
+              >
+                <div>
+                  <h2 className="font-variable-semibold">{name}</h2>
+                </div>
+
+                <div className="col-span-2">
+                  <p>“{text}”</p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-foreground-neutral">{title}</p>
+                  <p className="text-sm text-foreground-neutral">{company}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </>
   );
 }
