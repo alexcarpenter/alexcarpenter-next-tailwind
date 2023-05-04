@@ -37,8 +37,8 @@ export default function Posts() {
       </header>
 
       <section className="mt-16">
-        <header className="grid grid-cols-4 gap-16">
-          <div className="col-span-2 col-start-2">
+        <header className="grid gap-16 md:grid-cols-4">
+          <div className="md:col-span-2 md:col-start-2">
             <h2 className="font-variable-semibold text-lg">
               Tech stack <span aria-hidden="true">¬</span>
             </h2>
@@ -122,16 +122,16 @@ export default function Posts() {
       </section>
 
       <section className="mt-16">
-        <header className="grid grid-cols-4 gap-16">
-          <div className="col-span-2 col-start-2">
+        <header className="grid gap-16 md:grid-cols-4">
+          <div className="md:col-span-2 md:col-start-2">
             <h2 className="font-variable-semibold text-lg">
               Inspiration <span aria-hidden="true">¬</span>
             </h2>
           </div>
         </header>
 
-        <div className="mt-8 grid grid-cols-4 gap-16">
-          <div className="col-span-2 col-start-2">
+        <div className="mt-8 grid gap-16 md:grid-cols-4">
+          <div className="md:col-span-2 md:col-start-2">
             {inspiration.map((url, index) => {
               return (
                 <Fragment key={url}>
