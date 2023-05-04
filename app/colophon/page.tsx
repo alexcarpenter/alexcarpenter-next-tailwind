@@ -27,9 +27,12 @@ export default function Posts() {
           <h1 className="font-variable-semibold text-3xl tracking-tight text-foreground">
             Colophon
           </h1>
-          <p className="mt-1 text-lg text-foreground-neutral">
-            View source on GitHub
-          </p>
+          <a
+            href="https://github.com/alexcarpenter/alexcarpenter-next-tailwind"
+            className="mt-1 block w-max text-lg text-foreground-neutral"
+          >
+            View source on GitHub <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </header>
 
@@ -41,6 +44,81 @@ export default function Posts() {
             </h2>
           </div>
         </header>
+
+        <ul className="mt-8">
+          <li className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4">
+            <div className="">
+              <h2 className="font-variable-semibold">Next.js</h2>
+            </div>
+
+            <div className="col-span-2">
+              <p>Framework... WIP</p>
+            </div>
+
+            <div>
+              <a href="https://nextjs.org/" className="text-foreground-neutral">
+                Vist <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </li>
+
+          <li className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4">
+            <div className="">
+              <h2 className="font-variable-semibold">Tailwind CSS</h2>
+            </div>
+
+            <div className="col-span-2">
+              <p>Styling... WIP</p>
+            </div>
+
+            <div>
+              <a
+                href="https://tailwindcss.com/"
+                className="text-foreground-neutral"
+              >
+                Vist <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </li>
+
+          <li className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4">
+            <div className="">
+              <h2 className="font-variable-semibold">Framer Motion</h2>
+            </div>
+
+            <div className="col-span-2">
+              <p>Animation... WIP</p>
+            </div>
+
+            <div>
+              <a
+                href="https://www.framer.com/motion/"
+                className="text-foreground-neutral"
+              >
+                Vist <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </li>
+
+          <li className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4">
+            <div className="">
+              <h2 className="font-variable-semibold">Contentlayer</h2>
+            </div>
+
+            <div className="col-span-2">
+              <p>Data... WIP</p>
+            </div>
+
+            <div>
+              <a
+                href="https://www.contentlayer.dev/"
+                className="text-foreground-neutral"
+              >
+                Vist <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </li>
+        </ul>
       </section>
 
       <section className="mt-16">

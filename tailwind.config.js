@@ -9,14 +9,14 @@ module.exports = {
     "./styles/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ["var(--font-inter)", ...fontFamily.sans],
+      serif: ["var(--font-instrument)", ...fontFamily.serif],
+    },
     extend: {
       gradientColorStops: {
         "text-gradient-start": "hsl(var(--foreground))",
         "text-gradient-end": "hsl(var(--foreground-neutral))",
-      },
-      fontFamily: {
-        sans: ["var(--font-inter)", ...fontFamily.sans],
-        serif: ["var(--font-instrument)", ...fontFamily.serif],
       },
       backgroundColor: {
         page: "hsl(var(--page))",

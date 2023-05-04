@@ -15,6 +15,10 @@ const routes = [
     label: "bookmarks",
     href: "/bookmarks",
   },
+  {
+    label: "colophon",
+    href: "/colophon",
+  },
 ];
 
 const accounts = [
