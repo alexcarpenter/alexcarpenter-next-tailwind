@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const routes = [
   {
@@ -31,6 +33,7 @@ const accounts = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   return (
     <header className="grid grid-cols-2 gap-x-16 gap-y-4 md:grid-cols-4">
       <div className="col-span-2 md:col-span-1">
@@ -42,18 +45,24 @@ export function Header() {
 
       <div className="md:col-span-2">
         <p className="font-variable-semibold text-foreground">Routes</p>
-        {routes.map(({ href, label }) => {
-          return (
-            <Link
-              key={href}
-              href={href}
-              className="block w-max text-foreground-neutral"
-            >
-              <span aria-hidden="true">/</span>
-              {label}
-            </Link>
-          );
-        })}
+        <nav>
+          <ul>
+            {routes.map(({ href, label }) => {
+              return (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="block w-max text-foreground-neutral"
+                    aria-current={pathname === href ? "page" : undefined}
+                  >
+                    <span aria-hidden="true">/</span>
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
 
       <div>
