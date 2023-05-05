@@ -1,4 +1,8 @@
-import { defineDocumentType, defineNestedType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Bookmarks
@@ -113,6 +117,35 @@ export const Job = defineDocumentType(() => ({
 }));
 
 ////////////////////////////////////////////////////////////////////////////////
+// Posts
+
+export const Post = defineDocumentType(() => ({
+  name: "Post",
+  filePathPattern: `posts/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: false,
+    },
+    date: {
+      type: "date",
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+  },
+}));
+
+////////////////////////////////////////////////////////////////////////////////
 // Recommendations
 
 export const Recommendation = defineDocumentType(() => ({
@@ -149,5 +182,5 @@ export const Recommendation = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Bookmark, Job, Recommendation],
+  documentTypes: [Bookmark, Job, Post, Recommendation],
 });
