@@ -24,6 +24,16 @@
   }
 }
 
+@layer components {
+  .prose > * + * {
+    @apply mt-4;
+  }
+
+  .prose a {
+    @apply underline decoration-underline hover:decoration-inherit;
+  }
+}
+
 @layer utilities {
   .font-variable-semibold {
     font-variation-settings: "wght" 575;
