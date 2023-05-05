@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allPosts } from "@/.contentlayer/generated";
 import { Mdx } from "@/app/mdx";
@@ -17,6 +18,20 @@ async function getPostFromParams(params: PageProps["params"]) {
   }
 
   return post;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const post = await getPostFromParams(params);
+
+  if (!post) {
+    return {};
+  }
+
+  return {
+    title: post.title,
+  };
 }
 
 export async function generateStaticParams(): Promise<PageProps["params"][]> {
