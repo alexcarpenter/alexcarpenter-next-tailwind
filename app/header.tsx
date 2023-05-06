@@ -12,13 +12,17 @@ const routes = [
     href: "/posts",
   },
   {
+    label: "activity",
+    href: "/activity",
+  },
+  {
     label: "bookmarks",
     href: "/bookmarks",
   },
-  {
-    label: "colophon",
-    href: "/colophon",
-  },
+  // {
+  //   label: "colophon",
+  //   href: "/colophon",
+  // },
 ];
 
 const accounts = [
@@ -39,15 +43,21 @@ const accounts = [
 export function Header() {
   const pathname = usePathname();
   return (
-    <header className="grid grid-cols-2 gap-x-16 gap-y-4 md:grid-cols-4">
-      <div className="col-span-2 md:col-span-1">
-        <p className="font-variable-semibold text-foreground">
-          <Link href="/">Alex Carpenter</Link>
-        </p>
-        <p className="text-foreground-neutral">Design Engineer</p>
+    <header className="grid grid-cols-2 items-start gap-x-16 gap-y-4 md:grid-cols-4">
+      <div className="col-span-2 flex items-center justify-between md:col-span-1">
+        <div>
+          <p className="font-variable-semibold text-foreground">
+            <Link href="/">Alex Carpenter</Link>
+          </p>
+          <p className="text-foreground-neutral">Design Engineer</p>
+        </div>
+
+        <button className="grid h-10 w-10 items-center rounded-full border bg-surface-neutral md:hidden">
+          <span className="sr-only">Open menu</span>
+        </button>
       </div>
 
-      <div className="md:col-span-2">
+      <div className="hidden md:col-span-2 md:block">
         <p className="font-variable-semibold text-foreground">Routes</p>
         <nav>
           <ul>
@@ -69,7 +79,7 @@ export function Header() {
         </nav>
       </div>
 
-      <div>
+      <div className="hidden md:block">
         <p className="font-variable-semibold text-foreground">Connect</p>
         {accounts.map(({ href, label }) => {
           return (

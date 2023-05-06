@@ -1,6 +1,7 @@
 import type { Metadata } from "next/types";
 import { parseDateToString, compareDesc } from "@/lib/formatting";
 import { allBookmarks } from "@/.contentlayer/generated";
+import { Mdx } from "../mdx";
 
 export const metadata: Metadata = {
   title: "Bookmarks",
@@ -26,38 +27,38 @@ export default function Bookmarks() {
 
       <section className="mt-16">
         <ul>
-          {sortedBookmarks.map((bookmark) => {
+          {sortedBookmarks.map(({ _id, url, title, body, date }) => {
             return (
               <li
-                key={bookmark._id}
+                key={_id}
                 className="grid gap-x-16 gap-y-2 border-t py-8 md:grid-cols-4"
               >
                 <div className="md:col-span-2 md:col-start-2">
                   <p className="text-sm text-foreground-neutral">
-                    {new URL(bookmark.url).hostname}
+                    {new URL(url).hostname}
                   </p>
                   <h2 className="font-variable-semibold">
                     <a
-                      href={bookmark.url}
+                      href={url}
                       className="underline decoration-underline hover:decoration-inherit"
                     >
-                      {bookmark.title}
+                      {title}
                     </a>{" "}
                     ↗
                   </h2>
-                  {bookmark.description ? (
-                    <p className="mt-2 text-foreground-neutral">
-                      {bookmark.description}
-                    </p>
+                  {body ? (
+                    <div className="prose mt-4">
+                      <Mdx code={body.code} />
+                    </div>
                   ) : null}
                 </div>
 
                 <div className="md:col-start-1 md:row-start-1">
                   <time
                     className="text-sm text-foreground-neutral"
-                    dateTime={bookmark.date}
+                    dateTime={date}
                   >
-                    {parseDateToString(bookmark.date)}
+                    {parseDateToString(date)}
                   </time>
                 </div>
               </li>

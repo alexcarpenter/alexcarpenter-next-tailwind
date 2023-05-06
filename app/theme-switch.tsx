@@ -2,7 +2,7 @@
 import { useState, useEffect, type ReactNode } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
-import { useFocusWithin, useFocusVisible } from "react-aria";
+import { useFocusWithin, useFocusVisible } from "@react-aria/interactions";
 import { cx } from "@/lib/classnames";
 
 type Theme = "system" | "dark" | "light";

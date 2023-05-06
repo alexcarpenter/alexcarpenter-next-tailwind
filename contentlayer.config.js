@@ -3,6 +3,30 @@ import {
   defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
+import remarkGfm from "remark-gfm";
+import rehypeCodeTitles from "rehype-code-titles";
+import rehypePrettyCode from "rehype-pretty-code";
+
+////////////////////////////////////////////////////////////////////////////////
+// Activities
+
+export const Activity = defineDocumentType(() => ({
+  name: "Activity",
+  filePathPattern: `activities/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    date: {
+      type: "date",
+      required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) => post._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+  },
+}));
 
 ////////////////////////////////////////////////////////////////////////////////
 // Bookmarks
@@ -15,10 +39,6 @@ const Bookmark = defineDocumentType(() => ({
     title: {
       type: "string",
       required: true,
-    },
-    description: {
-      type: "string",
-      required: false,
     },
     date: {
       type: "date",
@@ -180,7 +200,44 @@ export const Recommendation = defineDocumentType(() => ({
   },
 }));
 
+////////////////////////////////////////////////////////////////////////////////
+// Rehype Pretty Code
+
+const rehypePrettyCodeOptions = {
+  theme: {
+    light: "github-light",
+    dark: "github-dark",
+  },
+  tokensMap: {
+    // VScode command palette: Inspect Editor Tokens and Scopes
+    // https://github.com/Binaryify/OneDark-Pro/blob/47c66a2f2d3e5c85490e1aaad96f5fab3293b091/themes/OneDark-Pro.json
+    fn: "entity.name.function",
+    objKey: "meta.object-literal.key",
+  },
+  onVisitLine(node) {
+    // Prevent lines from collapsing in `display: grid` mode, and
+    // allow empty lines to be copy/pasted
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+    node.properties.className.push("syntax-line");
+  },
+  onVisitHighlightedLine(node) {
+    node.properties.className.push("syntax-line--highlighted");
+  },
+  onVisitHighlightedWord(node) {
+    node.properties.className = ["syntax-word--highlighted"];
+  },
+};
+
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Bookmark, Job, Post, Recommendation],
+  documentTypes: [Activity, Bookmark, Job, Post, Recommendation],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeCodeTitles,
+      [rehypePrettyCode, rehypePrettyCodeOptions],
+    ],
+  },
 });
