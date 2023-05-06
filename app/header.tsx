@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import * as Dialog from "@radix-ui/react-dialog";
 
 const routes = [
   {
@@ -52,9 +53,55 @@ export function Header() {
           <p className="text-foreground-neutral">Design Engineer</p>
         </div>
 
-        <button className="grid h-10 w-10 items-center rounded-full border bg-surface-neutral md:hidden">
-          <span className="sr-only">Open menu</span>
-        </button>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <button className="grid h-10 w-10 place-items-center items-center rounded-full border bg-surface-neutral md:hidden">
+              <span className="sr-only">Open menu</span>
+              <ArrowLeft />
+            </button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 bg-page/70 backdrop-blur-sm" />
+            <Dialog.Content className="absolute bottom-0 right-0 top-0 w-11/12 border-l bg-page px-4 py-16">
+              <Dialog.Close asChild>
+                <button className="float-right mb-2 ml-2 grid h-10 w-10 place-items-center items-center rounded-full border bg-surface-neutral md:hidden">
+                  <span className="sr-only">Close menu</span>
+                  <ArrowRight />
+                </button>
+              </Dialog.Close>
+
+              <div>
+                <p className="font-variable-semibold">Routes</p>
+                <nav>
+                  <ul>
+                    {routes.map(({ href, label }) => {
+                      return (
+                        <li key={href}>
+                          <Link href={href} className="text-foreground-neutral">
+                            {label}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+
+                <p className="font-variable-semibold mt-8">Connect</p>
+                <ul>
+                  {accounts.map(({ href, label }) => {
+                    return (
+                      <li key={href}>
+                        <a href={href} className="text-foreground-neutral">
+                          {label} <span aria-hidden="true">↗</span>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
       </div>
 
       <div className="hidden md:col-span-2 md:block">
@@ -94,5 +141,43 @@ export function Header() {
         })}
       </div>
     </header>
+  );
+}
+
+function ArrowLeft() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="19" y1="12" x2="5" y2="12" />
+      <polyline points="12 19 5 12 12 5" />
+    </svg>
+  );
+}
+
+function ArrowRight() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
   );
 }
