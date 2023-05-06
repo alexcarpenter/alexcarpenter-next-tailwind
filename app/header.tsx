@@ -57,7 +57,7 @@ export function Header() {
           <Dialog.Trigger asChild>
             <button className="grid h-10 w-10 place-items-center items-center rounded-full border bg-surface-neutral md:hidden">
               <span className="sr-only">Open menu</span>
-              <ArrowLeft />
+              <MenuIcon />
             </button>
           </Dialog.Trigger>
           <Dialog.Portal>
@@ -66,7 +66,7 @@ export function Header() {
               <Dialog.Close asChild>
                 <button className="float-right mb-2 ml-2 grid h-10 w-10 place-items-center items-center rounded-full border bg-surface-neutral md:hidden">
                   <span className="sr-only">Close menu</span>
-                  <ArrowRight />
+                  <CloseIcon />
                 </button>
               </Dialog.Close>
 
@@ -144,7 +144,7 @@ export function Header() {
   );
 }
 
-function ArrowLeft() {
+function MenuIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -157,13 +157,14 @@ function ArrowLeft() {
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <line x1="19" y1="12" x2="5" y2="12" />
-      <polyline points="12 19 5 12 12 5" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="18" x2="21" y2="18" />
     </svg>
   );
 }
 
-function ArrowRight() {
+function CloseIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -176,8 +177,8 @@ function ArrowRight() {
       stroke-linecap="round"
       stroke-linejoin="round"
     >
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 }
